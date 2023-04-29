@@ -25,6 +25,7 @@ body{
     background-color: grey;
     border: 1px solid white;
     border-radius: 6px;
+    overflow: clip;
     
     
 }

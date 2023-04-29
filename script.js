@@ -11,9 +11,13 @@ buttons.map((button) => {
         display.innerText = display.innerText.slice(0, -1);
         break;
       case "=":
-        if (display.innerText == "0/0") {
-          display.innerText = "Infinity";
-        } else if (display.innerText.length == 0) {
+        for (let i = 0; i < display.innerText.length; i++) {
+          if (display.innerText[i] == "/" && display.innerText[i + 1] == "0") {
+            display.innerText = "Infinity";
+          }
+        }
+
+        if (display.innerText.length == 0) {
           display.innerText = "0";
         } else {
           try {
@@ -34,6 +38,11 @@ buttons.map((button) => {
         } else if (display.innerText.length == 1 && display.innerText == "0") {
           display.innerText = display.innerText.slice(0, -1);
           display.innerText += e.target.innerText;
+        } else if (
+          display.innerText == "Invalid Input" ||
+          display.innerText == "Infinity"
+        ) {
+          display.innerText = e.target.innerText;
         } else {
           display.innerText += e.target.innerText;
         }
